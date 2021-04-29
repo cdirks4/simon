@@ -7,23 +7,28 @@ const userClicks = []
 const startButton = document.querySelector('.start')
 const computerArray = []
 const classesArray = [buttonOne,buttonTwo,buttonThree,buttonFour]
-
+const round = document.querySelector(".round")
 const clickTracker = (e) =>{ 
-    console.log(e.target.classList)
     e.preventDefault()
     if(e.target.classList[0] == "quadrent"){
       buttonClicked = e.target.classList[1]
-      console.log(buttonClicked)
-       console.log(parseInt(buttonClicked))
+      userClicks.push(e.target)
+      console.log(userClicks)
     }else if (e.target.classList[0] == "inner-circle") {
         console.log("innercircle clicked")
     }
+    if (computerArray == userClicks){
+        console.log("you win")
+    } 
 }
-
 
 const computerPattern = (e) => {
     e.preventDefault()
-    Math.random
+    for (let i = 0; i < 5; i++) {
+       randomChoice =  Math.floor(Math.random()*3)
+       computerChoice = classesArray[randomChoice]
+        computerArray.push(computerChoice)
+    }console.log(computerArray)
 }
 
 
