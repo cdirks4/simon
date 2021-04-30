@@ -62,7 +62,7 @@
 	border-bottom-left-radius: 40%;
 }
 
-.three {
+.four {
 	right: 250px;
 	background: pink;
 	top: 250px;
@@ -70,7 +70,7 @@
 	border-top-right-radius: 40%;
 }
 
-.four {
+.three {
 	background: blue;
 	border-bottom-right-radius: 100%;
 	top: 250px;
