@@ -5,7 +5,7 @@
 	width: 500px;
 	height: 500px;
 	background-color: slategray;
-	margin: 25% auto;
+	margin: 0 auto;
 	border-radius: 50%;
 	position: relative;
 	display: flex;
@@ -21,8 +21,8 @@
 	height: 175px;
 	width: 175px;
 	border: 35px solid slategray;
-    color: white;
-    flex-direction: column;
+	color: white;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
@@ -52,6 +52,7 @@
 	bottom: 250px;
 	right: 250px;
 	background-color: red;
+	opacity: 50%;
 }
 
 .two {
@@ -60,28 +61,31 @@
 	background-color: green;
 	border-top-right-radius: 100%;
 	border-bottom-left-radius: 40%;
+	opacity: 50%;
 }
 
 .four {
 	right: 250px;
-	background: pink;
+	background-color: pink;
 	top: 250px;
 	border-bottom-left-radius: 100%;
 	border-top-right-radius: 40%;
+	opacity: 50%;
 }
 
 .three {
-	background: blue;
+	background-color: blue;
 	border-bottom-right-radius: 100%;
 	top: 250px;
 	left: 250px;
 	border-top-left-radius: 40%;
+	opacity: 50%;
 }
 .button {
 }
-h1{
-    text-align: center;
+h1 {
+	text-align: center;
 }
-h2{
-    text-align: center;
+h2 {
+	text-align: center;
 }
