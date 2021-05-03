@@ -6,7 +6,12 @@ const circleButtons = document.querySelector('.inner-circle');
 const startButton = document.querySelector('.start');
 const roundText = document.querySelector('.round');
 const quadrent = document.querySelectorAll('.quadrent');
-
+const lightMode = document.querySelector('.light');
+const darkMode = document.querySelector('.dark');
+const normal = document.querySelector('.normal');
+const speedRound = document.querySelector('.speed');
+const lifeMode = document.querySelector('.lives');
+const liveText = document.querySelector('.liveBoard');
 const classesArray = [buttonOne, buttonTwo, buttonThree, buttonFour];
 let computerArray = [];
 let winningArray = [];
@@ -16,6 +21,8 @@ let win = false;
 let start = false;
 let rounds = 3;
 let level = 1;
+let speed = 700;
+let lives = 0;
 // not allowing the user to click until the first function is done running
 // creaating a promise to be recalled to set time for the lights to flash
 const timer = (time) => {
@@ -25,7 +32,7 @@ const reset = () => {
 	buttonOne.style.backgroundColor = 'red';
 	buttonTwo.style.backgroundColor = 'green';
 	buttonThree.style.backgroundColor = 'blue';
-	buttonFour.style.backgroundColor = 'pink';
+	buttonFour.style.backgroundColor = 'yellow';
 };
 
 const loser = async () => {
@@ -33,18 +40,36 @@ const loser = async () => {
 	buttonTwo.style.backgroundColor = 'red';
 	buttonThree.style.backgroundColor = 'red';
 	buttonFour.style.backgroundColor = 'red';
-	rounds = 3
+	rounds = 3;
 	await timer(900);
 	buttonOne.style.backgroundColor = 'red';
 	buttonTwo.style.backgroundColor = 'green';
 	buttonThree.style.backgroundColor = 'blue';
-	buttonFour.style.backgroundColor = 'pink';
-	rounds;
-	userClicks = []
-	computerArray = [];
-	return (loss = true);
+	buttonFour.style.backgroundColor = 'purple';
+	if (lives > 0) {
+		win = false;
+		lives -= 1;
+		rounds = 0;
+		userClicks = [];
+		liveText.innerText = `Remaining lives ${lives}`;
+		await timer(600);
+		return computerPattern();
+	} else {
+		liveText.innerText = '';
+		userClicks = [];
+		computerArray = [];
+		level = 1;
+		return (loss = true);
+	}
 };
-const lights = async () => {};
+
+const lifeFunction = () => {
+	lives = 2;
+	liveText.innerText = `Remaining lives ${lives}`;
+};
+const speedFunction = () => (speed = 400);
+const normalFunction = () => (speed = 700);
+// const lights = async () => {};
 // const clickTracker = (e) => {
 // 	e.preventDefault();
 // 	if (e.target.classList[0] == 'quadrent') {
@@ -60,9 +85,9 @@ const lights = async () => {};
 // };
 
 const computerPattern = async (e) => {
-	start = false
+	start = false;
 	if (win == true) {
-		rounds += 2;
+		rounds += 1;
 		win = false;
 	}
 	for (let i = 0; i < rounds; i++) {
@@ -72,9 +97,9 @@ const computerPattern = async (e) => {
 	}
 	for (let i = 0; i < computerArray.length; i++) {
 		computerArray[i].style.opacity = '100%'; //causing board lights to go from 50% to 100% to "blink"
-		await timer(600); //revalling promise 60 milliseconds
+		await timer(speed); //revalling promise 60 milliseconds
 		computerArray[i].style.opacity = '50%'; //resetting lights
-		await timer(600); //recalling promise 600 milliseconds
+		await timer(speed); //recalling promise 600 milliseconds
 		console.log(computerArray);
 	}
 	start = true; // now the user can begin to click
@@ -91,13 +116,13 @@ const clickTracker = async (e) => {
 			//pulling the most recently added click array and comparing
 			userClicks[userClicks.length - 1] != computerArray[userClicks.length - 1]
 		) {
-			 return loser();
+			return loser();
 		}
 		if (
 			userClicks[userClicks.length - 1] == computerArray[userClicks.length - 1]
 		) {
 			e.target.style.opacity = '100%';
-			await timer(600);
+			await timer(speed);
 			e.target.style.opacity = '50%';
 		}
 		if (
@@ -114,7 +139,9 @@ const clickTracker = async (e) => {
 		}
 	}
 };
-
+lifeMode.addEventListener('click', lifeFunction);
+speedRound.addEventListener('click', speedFunction);
+normal.addEventListener('click', normalFunction);
 startButton.addEventListener('click', computerPattern);
 circleButtons.addEventListener('click', clickTracker);
 
