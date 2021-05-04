@@ -12,6 +12,8 @@ const normal = document.querySelector('.normal');
 const speedRound = document.querySelector('.speed');
 const lifeMode = document.querySelector('.lives');
 const liveText = document.querySelector('.liveBoard');
+const scoreText = document.querySelector('.score');
+const highscoreText = document.querySelector('.highscore')
 const classesArray = [buttonOne, buttonTwo, buttonThree, buttonFour];
 let computerArray = [];
 let winningArray = [];
@@ -23,6 +25,8 @@ let rounds = 3;
 let level = 1;
 let speed = 700;
 let lives = 0;
+let score = 0;
+let highscore = 0
 // not allowing the user to click until the first function is done running
 // creaating a promise to be recalled to set time for the lights to flash
 const timer = (time) => {
@@ -53,13 +57,19 @@ const loser = async () => {
 		userClicks = [];
 		liveText.innerText = `Remaining lives ${lives}`;
 		await timer(600);
-		return computerPattern();
+		computerPattern();
 	} else {
 		liveText.innerText = '';
 		userClicks = [];
 		computerArray = [];
 		level = 1;
-		return (loss = true);
+		if(score>highscore){
+			highscore = score
+		}
+		highscoreText.innerText = `Highscore: ${highscore}`
+		score = 0;
+		scoreText.innerText = `Score: ${score}`;
+		return (roundText.innerText = `Round ${level}`);
 	}
 };
 
@@ -69,23 +79,8 @@ const lifeFunction = () => {
 };
 const speedFunction = () => (speed = 400);
 const normalFunction = () => (speed = 700);
-// const lights = async () => {};
-// const clickTracker = (e) => {
-// 	e.preventDefault();
-// 	if (e.target.classList[0] == 'quadrent') {
-// 		buttonClicked = e.target.classList[1];
-// 		userClicks.push(e.target);
-// 		console.log(userClicks);
-// 	} else if (e.target.classList[0] == 'inner-circle') {
-// 		console.log('innercircle clicked');
-// 	}
-// 	if (winningArray == userClicks) {
-// 		console.log('you win');
-// 	}
-// };
 
 const computerPattern = async (e) => {
-	start = false;
 	if (win == true) {
 		rounds += 1;
 		win = false;
@@ -121,8 +116,10 @@ const clickTracker = async (e) => {
 		if (
 			userClicks[userClicks.length - 1] == computerArray[userClicks.length - 1]
 		) {
+			score += 1;
+			scoreText.innerText = `Score: ${score}`;
 			e.target.style.opacity = '100%';
-			await timer(speed);
+			await timer(300);
 			e.target.style.opacity = '50%';
 		}
 		if (
@@ -134,32 +131,15 @@ const clickTracker = async (e) => {
 			win = true;
 			level += 1;
 			roundText.innerText = `Round ${level}`;
-			await timer(2500);
+			start = false;
+			await timer(2000);
 			return computerPattern();
 		}
 	}
 };
+
 lifeMode.addEventListener('click', lifeFunction);
 speedRound.addEventListener('click', speedFunction);
 normal.addEventListener('click', normalFunction);
 startButton.addEventListener('click', computerPattern);
 circleButtons.addEventListener('click', clickTracker);
-
-// console.log(computerArray);
-// for (let i = 0; i < userClicks.length; i++) {
-// 	console.log(userClicks);
-// 	if (userClicks[i] != winningArray[0][i]) {
-// 		buttonOne.style.backgroundColor = 'red';
-// 		buttonTwo.style.backgroundColor = 'red';
-// 		buttonThree.style.backgroundColor = 'red';
-// 		buttonFour.style.backgroundColor = 'red';
-// 		return (lost = true);
-// 	} else if (userClicks[i].classList[1] == winningArray[0][i].classList[1]) {
-// 		e.target.style.opacity = '100%';
-// 		await timer(1000);
-// 		e.target.style.opacity = '50%';
-// 	}
-// }
-// pulling from computer array at the same indice comparing the two
-// ) {
-// 	if incorrect button gets pushed all colors go red

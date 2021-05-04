@@ -1,8 +1,9 @@
 /* * {
 	box-sizing: border-box;
 } */
-body{
-	background-color: skyblue;
+
+body {
+	background-color: grey;
 }
 .board {
 	width: 500px;
@@ -16,6 +17,7 @@ body{
 	align-items: center;
 }
 .middle {
+	display: flex;
 	z-index: 10;
 	text-align: center;
 	position: absolute;
@@ -25,9 +27,11 @@ body{
 	width: 175px;
 	border: 35px solid slategray;
 	color: white;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+	font-size: 25px;
+	flex-direction: column;
 }
 .inner-circle {
 	background-color: whitesmoke;
@@ -92,10 +96,20 @@ h1 {
 h2 {
 	text-align: center;
 }
-.modes{
+.modes {
 	display: flex;
 	justify-content: center;
 }
-.lives{
-	text-align: right;
+.lives {
+	text-align: center;
+}
+.start {
+	border-radius: 50%;
+	height: 50px;
+}
+
+.scoreDiv {
+}
+.score {
+	text-align: center;
 }
