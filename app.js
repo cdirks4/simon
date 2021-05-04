@@ -13,7 +13,7 @@ const speedRound = document.querySelector('.speed');
 const lifeMode = document.querySelector('.lives');
 const liveText = document.querySelector('.liveBoard');
 const scoreText = document.querySelector('.score');
-const highscoreText = document.querySelector('.highscore')
+const highscoreText = document.querySelector('.highscore');
 const classesArray = [buttonOne, buttonTwo, buttonThree, buttonFour];
 let computerArray = [];
 let winningArray = [];
@@ -26,7 +26,7 @@ let level = 1;
 let speed = 700;
 let lives = 0;
 let score = 0;
-let highscore = 0
+let highscore = 0;
 // not allowing the user to click until the first function is done running
 // creaating a promise to be recalled to set time for the lights to flash
 const timer = (time) => {
@@ -63,10 +63,10 @@ const loser = async () => {
 		userClicks = [];
 		computerArray = [];
 		level = 1;
-		if(score>highscore){
-			highscore = score
+		if (score > highscore) {
+			highscore = score;
 		}
-		highscoreText.innerText = `Highscore: ${highscore}`
+		highscoreText.innerText = `Highscore: ${highscore}`;
 		score = 0;
 		scoreText.innerText = `Score: ${score}`;
 		return (roundText.innerText = `Round ${level}`);

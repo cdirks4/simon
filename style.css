@@ -3,7 +3,7 @@
 } */
 
 body {
-	background-color: grey;
+	background-color: beige;
 }
 .board {
 	width: 500px;
@@ -88,7 +88,15 @@ body {
 	border-top-left-radius: 40%;
 	opacity: 50%;
 }
-.button {
+.modes{
+	display: flex;
+}
+.modes button{
+	justify-content: space-between;
+	background-color: gray;
+	color: white;
+	height: 30px;
+	border-radius: 33%;
 }
 h1 {
 	text-align: center;
@@ -105,7 +113,8 @@ h2 {
 }
 .start {
 	border-radius: 50%;
-	height: 50px;
+	height: 1000px;
+	border: 3px solid grey;
 }
 
 .scoreDiv {
