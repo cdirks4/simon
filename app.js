@@ -95,7 +95,7 @@ const computerPattern = async (e) => {
 		await timer(speed); //revalling promise 60 milliseconds
 		computerArray[i].style.opacity = '50%'; //resetting lights
 		await timer(speed); //recalling promise 600 milliseconds
-		console.log(computerArray);
+	
 	}
 	start = true; // now the user can begin to click
 };

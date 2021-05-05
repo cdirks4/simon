@@ -60,6 +60,7 @@ body {
 	right: 250px;
 	background-color: red;
 	opacity: 50%;
+	border: 7px solid black;
 }
 
 .two {
@@ -69,6 +70,7 @@ body {
 	border-top-right-radius: 100%;
 	border-bottom-left-radius: 40%;
 	opacity: 50%;
+	border: 7px solid black;
 }
 
 .four {
@@ -78,6 +80,7 @@ body {
 	border-bottom-left-radius: 100%;
 	border-top-right-radius: 40%;
 	opacity: 50%;
+	border: 7px solid black;
 }
 
 .three {
@@ -87,11 +90,12 @@ body {
 	left: 250px;
 	border-top-left-radius: 40%;
 	opacity: 50%;
+	border: 7px solid black;
 }
-.modes{
+.modes {
 	display: flex;
 }
-.modes button{
+.modes button {
 	justify-content: space-between;
 	background-color: gray;
 	color: white;
